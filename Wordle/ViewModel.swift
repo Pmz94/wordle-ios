@@ -21,7 +21,7 @@ final class ViewModel: ObservableObject {
 		"CAGAR",
 		"CARRO",
 		"CHAPO",
-		"COJER",
+		"COGER",
 		"COMER",
 		"DATOS",
 		"DEBER",
