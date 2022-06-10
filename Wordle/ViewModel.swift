@@ -2,7 +2,7 @@
 //  ViewModel.swift
 //  Wordle
 //
-//  Created by Csweb on 27/04/22.
+//  Created by Pedro Muñoz
 //
 
 import Foundation
@@ -14,11 +14,11 @@ final class ViewModel: ObservableObject {
 		"ADMIN",
 		"AMADO",
 		"AMIGO",
+		"APOLO",
 		"APOYO",
 		"BAÑOS",
 		"BESOS",
 		"CANTO",
-		"CAGAR",
 		"CARRO",
 		"CHAPO",
 		"COGER",
@@ -26,7 +26,6 @@ final class ViewModel: ObservableObject {
 		"DATOS",
 		"DEBER",
 		"DULCE",
-		"HAIGA",
 		"HUIDA",
 		"NARCO",
 		"ODIAR",
@@ -101,10 +100,12 @@ final class ViewModel: ObservableObject {
 			tapOnSend()
 			return
 		}
+		
 		if letterModel.name == "🔙" {
 			tapOnRemove()
 			return
 		}
+		
 		if word.count < 5 {
 			let letter = LetterModel(letterModel.name)
 			word.append(letter)
@@ -151,6 +152,7 @@ final class ViewModel: ObservableObject {
 
 				let indexToUpdate = keyboardData.firstIndex(where: { $0.name == currentCharacter })
 				var keyboardKey = keyboardData[indexToUpdate!]
+				
 				if keyboardKey.status != .match {
 					keyboardKey.status = status
 					keyboardData[indexToUpdate!] = keyboardKey

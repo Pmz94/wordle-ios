@@ -2,7 +2,7 @@
 //  KeyboardView.swift
 //  Wordle
 //
-//  Created by Csweb on 27/04/22.
+//  Created by Pedro Muñoz
 //
 
 import SwiftUI

@@ -2,10 +2,9 @@
 //  BannerView.swift
 //  Wordle
 //
-//  Created by Csweb on 27/04/22.
+//  Created by Pedro Muñoz
 //
 
-import Foundation
 import SwiftUI
 
 struct BannerView: View {
@@ -42,5 +41,12 @@ struct BannerView: View {
 		 .onAppear {
 			 isOnScreen = true
 		 }
+	}
+}
+
+struct BannerView_Previews: PreviewProvider {
+	static var previews: some View {
+		BannerView(bannerType: .success)
+		BannerView(bannerType: .error("Error"))
 	}
 }

@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  Wordle
 //
-//  Created by Csweb on 27/04/22.
+//  Created by Pedro Muñoz
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
 	@StateObject var viewModel = ViewModel()
 
 	var body: some View {
@@ -16,6 +16,7 @@ struct ContentView: View {
 				GameView(viewModel: viewModel)
 				KeyboardView(viewModel: viewModel)
 			}
+			
 			if viewModel.bannerType != nil {
 				BannerView(bannerType: viewModel.bannerType!)
 			}
@@ -34,6 +35,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView()
+		MainView()
 	}
 }
