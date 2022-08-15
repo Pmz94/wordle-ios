@@ -18,14 +18,14 @@ struct KeyboardView: View {
 	var body: some View {
 		LazyVGrid(columns: columns, spacing: 6) {
 			ForEach(viewModel.keyboardData, id: \.id) { model in
-				Button(action: {
+				Button {
 					viewModel.addNewLetter(letterModel: model)
-				}, label: {
+				} label: {
 					Text(model.name).font(.body)
-				}).frame(width: 34, height: 50)
-				  .foregroundColor(model.foregroundColor)
-				  .background(model.backgroundColor)
-				  .cornerRadius(8)
+				}.frame(width: 34, height: 50)
+				.foregroundColor(model.foregroundColor)
+				.background(model.backgroundColor)
+				.cornerRadius(8)
 			}
 		}.padding(.horizontal, 8)
 	}

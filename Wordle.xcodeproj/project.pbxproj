@@ -17,6 +17,7 @@
 		0A15FAA728206C4800C21D8C /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A15FAA628206C4800C21D8C /* KeyboardView.swift */; };
 		0A15FAA928206C6B00C21D8C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A15FAA828206C6B00C21D8C /* GameView.swift */; };
 		0AD3B2DD2852CB0D00E7FB32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD3B2DC2852CB0D00E7FB32 /* LaunchScreen.storyboard */; };
+		5A928096BCDA51250472351F /* palabras.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A9285CCE21BA27F0E6C69C4 /* palabras.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0A15FAA828206C6B00C21D8C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		0AD3B2DC2852CB0D00E7FB32 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A92828B2CF58BD75F9ABC5E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5A9285CCE21BA27F0E6C69C4 /* palabras.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = palabras.json; sourceTree = "<group>"; };
 		5A928D55D2EA8ACF270246E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				0A15FAA028206BE900C21D8C /* Model.swift */,
 				0A15FAA228206C0D00C21D8C /* ViewModel.swift */,
 				0A15FA912820697F00C21D8C /* WordleApp.swift */,
+				5A9285CCE21BA27F0E6C69C4 /* palabras.json */,
 			);
 			path = Wordle;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				0AD3B2DD2852CB0D00E7FB32 /* LaunchScreen.storyboard in Resources */,
 				0A15FA992820698000C21D8C /* Preview Assets.xcassets in Resources */,
 				0A15FA962820698000C21D8C /* Assets.xcassets in Resources */,
+				5A928096BCDA51250472351F /* palabras.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

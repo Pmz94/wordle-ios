@@ -10,36 +10,6 @@ import UIKit
 
 final class ViewModel: ObservableObject {
 
-	let PALABRAS: Array<String> = [
-		"ADMIN",
-		"AMADO",
-		"AMIGO",
-		"APOLO",
-		"APOYO",
-		"BAÑOS",
-		"BESOS",
-		"CANTO",
-		"CARRO",
-		"CHAPO",
-		"COGER",
-		"COMER",
-		"DATOS",
-		"DEBER",
-		"DULCE",
-		"HUIDA",
-		"NARCO",
-		"ODIAR",
-		"PERRO",
-		"PESOS",
-		"QUESO",
-		"RATON",
-		"REINA",
-		"RUIDO",
-		"SILLA",
-		"VIDEO",
-		"VIEJO",
-	]
-
 	let JUEGO_INICIAL: [[LetterModel]] = [
 		[.init(""), .init(""), .init(""), .init(""), .init("")],
 		[.init(""), .init(""), .init(""), .init(""), .init("")],
@@ -57,22 +27,18 @@ final class ViewModel: ObservableObject {
 		.init("C"), .init("V"), .init("B"), .init("N"), .init("M"), .init("🔙")
 	]
 
+	var PALABRAS: [String] = []
+	var keyboardData: [LetterModel] = []
 	var numOfRow: Int = 0
-
 	@Published var gameOver: Bool = false
-
 	@Published var bannerType: BannerType? = nil
-
 	@Published var word: [LetterModel] = []
-
-	@Published var palabra_correcta: String
-
+	@Published var palabra_correcta: String = ""
 	@Published var game: [[LetterModel]] = []
 
-	var keyboardData: [LetterModel] = []
-
 	init() {
-		palabra_correcta = PALABRAS.randomElement()!
+		PALABRAS = loadFile("palabras.json")
+		palabra_correcta = PALABRAS.randomElement()!.uppercased()
 		game = JUEGO_INICIAL
 		keyboardData = KEYBOARDDATA_INICIAL
 
@@ -85,7 +51,7 @@ final class ViewModel: ObservableObject {
 		gameOver = false
 		bannerType = nil
 		word = []
-		palabra_correcta = PALABRAS.randomElement()!
+		palabra_correcta = PALABRAS.randomElement()!.uppercased()
 		game = JUEGO_INICIAL
 		keyboardData = KEYBOARDDATA_INICIAL
 
@@ -100,12 +66,12 @@ final class ViewModel: ObservableObject {
 			tapOnSend()
 			return
 		}
-		
+
 		if letterModel.name == "🔙" {
 			tapOnRemove()
 			return
 		}
-		
+
 		if word.count < 5 {
 			let letter = LetterModel(letterModel.name)
 			word.append(letter)
@@ -152,7 +118,7 @@ final class ViewModel: ObservableObject {
 
 				let indexToUpdate = keyboardData.firstIndex(where: { $0.name == currentCharacter })
 				var keyboardKey = keyboardData[indexToUpdate!]
-				
+
 				if keyboardKey.status != .match {
 					keyboardKey.status = status
 					keyboardData[indexToUpdate!] = keyboardKey
@@ -209,6 +175,24 @@ final class ViewModel: ObservableObject {
 				return index == numOfRow
 			case .success:
 				return false
+		}
+	}
+
+	private func loadFile<T: Decodable>(_ filename: String) -> T {
+		let data: Data
+		guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
+			fatalError("No se encontro \(filename)")
+		}
+		do {
+			data = try Data(contentsOf: file)
+		} catch {
+			fatalError("Error al cargar \(filename):\n\(error)")
+		}
+		do {
+			let decoder = JSONDecoder()
+			return try decoder.decode(T.self, from: data)
+		} catch {
+			fatalError("Error al convertir \(filename): \(T.self):\n\(error)")
 		}
 	}
 }

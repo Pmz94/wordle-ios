@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct MainView: View {
-	@StateObject var viewModel = ViewModel()
+	@StateObject var vm = ViewModel()
 
 	var body: some View {
 		ZStack {
 			VStack(spacing: 30) {
-				GameView(viewModel: viewModel)
-				KeyboardView(viewModel: viewModel)
+				GameView(viewModel: vm)
+				KeyboardView(viewModel: vm)
 			}
-			
-			if viewModel.bannerType != nil {
-				BannerView(bannerType: viewModel.bannerType!)
+
+			if vm.bannerType != nil {
+				BannerView(bannerType: vm.bannerType!)
 			}
-		}.alert(isPresented: $viewModel.gameOver) {
+		}.alert(isPresented: $vm.gameOver) {
 			Alert(
 				title: Text("Juego terminado"),
 				message: Text("Juege otra vez!"),
 				dismissButton: .default(
 					Text("Esta bien"),
-					action: viewModel.replay
+					action: vm.replay
 				)
 			)
 		}

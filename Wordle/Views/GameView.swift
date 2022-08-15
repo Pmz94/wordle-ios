@@ -19,13 +19,10 @@ struct GameView: View {
 		LazyVGrid(columns: columns, spacing: 8) {
 			ForEach(0...columns.count, id: \.self) { index in
 				ForEach(viewModel.game[index], id: \.id) { model in
-					Button(action: {
-						// TODO
-					}, label: {
-						Text(model.name).font(.system(size: 40, weight: .bold))
-					}).frame(width: 60, height: 60)
-					  .foregroundColor(viewModel.hasError(index: index) ? .white : model.foregroundColor)
-					  .background(viewModel.hasError(index: index) ? .red : model.backgroundColor)
+					Text(model.name).font(.system(size: 40, weight: .bold))
+					.frame(width: 60, height: 60)
+					.foregroundColor(viewModel.hasError(index: index) ? .white : model.foregroundColor)
+					.background(viewModel.hasError(index: index) ? .red : model.backgroundColor)
 				}
 			}
 		}.padding(.horizontal, 20)
